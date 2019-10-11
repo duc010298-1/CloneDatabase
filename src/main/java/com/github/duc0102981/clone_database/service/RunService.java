@@ -27,11 +27,11 @@ public class RunService {
         List<CustomerEntity> customerEntities = new ArrayList<>();
         for (CustomerOldEntity c : customerOldEntities) {
             CustomerEntity cus = new CustomerEntity();
-            cus.setName(c.getCustomerName());
-            cus.setNameSearch(c.getNameSearch());
+            cus.setName(standardizeString(c.getCustomerName()));
+            cus.setNameSearch(standardizeSpaceString(c.getNameSearch()));
             cus.setYearOfBirth(c.getYob());
-            cus.setAddress(c.getAddress());
-            cus.setAddressSearch(c.getAddressSearch());
+            cus.setAddress(standardizeString(c.getAddress()));
+            cus.setAddressSearch(standardizeSpaceString(c.getAddressSearch()));
             cus.setDayVisit(c.getDayVisit());
             cus.setExpectedDateOfBirth(c.getExpectedDob());
             cus.setResult(c.getResult());
@@ -40,5 +40,25 @@ public class RunService {
             customerEntities.add(cus);
         }
         return customerEntities;
+    }
+
+    private String standardizeSpaceString(String str) {
+        str = str.trim();
+        str = str.replaceAll("\\s+", " ");
+        return str;
+    }
+
+    private String standardizeString(String str) {
+        str = standardizeSpaceString(str);
+        str = str.toLowerCase();
+        String temp[] = str.split(" ");
+        str = "";
+        for (int i = 0; i < temp.length; i++) {
+            str += String.valueOf(temp[i].charAt(0)).toUpperCase() + temp[i].substring(1);
+            if (i < temp.length - 1) {
+                str += " ";
+            }
+        }
+        return str;
     }
 }
