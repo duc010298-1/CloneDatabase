@@ -29,7 +29,7 @@ public class RunService {
             CustomerEntity cus = new CustomerEntity();
             cus.setName(standardizeString(c.getCustomerName()));
             cus.setNameSearch(standardizeSpaceString(c.getNameSearch()));
-            cus.setYearOfBirth(c.getYob());
+            cus.setYearOfBirth(Integer.toString(c.getYob()));
             cus.setAddress(standardizeString(c.getAddress()));
             cus.setAddressSearch(standardizeSpaceString(c.getAddressSearch()));
             cus.setDayVisit(c.getDayVisit());

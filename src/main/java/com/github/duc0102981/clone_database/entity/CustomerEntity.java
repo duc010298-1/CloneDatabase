@@ -13,7 +13,7 @@ public class CustomerEntity {
     private UUID id;
     private String name;
     private String nameSearch;
-    private int yearOfBirth;
+    private String yearOfBirth;
     private String address;
     private String addressSearch;
     private Date dayVisit;
@@ -56,11 +56,11 @@ public class CustomerEntity {
 
     @Basic
     @Column(name = "year_of_birth")
-    public int getYearOfBirth() {
+    public String getYearOfBirth() {
         return yearOfBirth;
     }
 
-    public void setYearOfBirth(int yearOfBirth) {
+    public void setYearOfBirth(String yearOfBirth) {
         this.yearOfBirth = yearOfBirth;
     }
 
