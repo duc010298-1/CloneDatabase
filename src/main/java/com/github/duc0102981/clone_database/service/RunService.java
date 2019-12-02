@@ -69,6 +69,7 @@ public class RunService {
     private String processOldReport(String oldReport) {
         oldReport += "<style>textarea {line-height: normal;padding: 0;}</style>";
         oldReport = "<div class=\"page\"><div class=\"page-container\">" + oldReport + "</div></div>";
-        return cssInline.convert(oldReport);
+        oldReport = cssInline.convert(oldReport);
+        return oldReport += "<style>.editor{padding:30px 45px;font-family:'Times New Roman',Times,serif}</style>";
     }
 }
